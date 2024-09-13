@@ -1,25 +1,36 @@
-# Caso Práctico: Modelamiento de Datos Relacionales para Plataforma de Ventas, Inventario y Facturación Electrónica de Videojuegos
+# dsrp_prestamos_financieros
+Pequeña base de datos para gestionar prestamos financieros.
 
-## Contexto: 
-Una tienda online especializada en videojuegos y accesorios relacionados desea gestionar sus ventas, controlar su inventario y emitir facturas electrónicas para sus clientes. Ofrecen productos como juegos, consolas, accesorios, y contenido digital, y necesitan un sistema que permita registrar las ventas, gestionar su inventario y emitir facturas electrónicas de manera eficiente.
+# Caso Práctico: Modelamiento de Datos Relacionales para Préstamos Financieros
+## Contexto
+Una institución financiera desea gestionar y controlar los préstamos que ofrece a sus clientes. La institución maneja diferentes tipos de préstamos (hipotecarios, automotrices, personales, etc.) y necesita un sistema para registrar y seguir el estado de cada préstamo, así como los pagos realizados por los clientes.
 
-## Requerimientos del Sistema:
+# Requerimientos del Sistema
 
 ## Clientes:
-La plataforma tiene clientes que compran videojuegos, consolas y accesorios en línea. Es necesario registrar información como nombre, dirección, teléfono, correo electrónico y número de identificación fiscal (DNI o RUC).
+La institución tiene clientes que pueden ser personas naturales o jurídicas. Se necesita registrar información como nombre, dirección, teléfono, correo electrónico, tipo de cliente (natural o jurídico), y número de identificación.
 
-## Productos:
-Cada producto tiene un código único y pertenece a una categoría (juegos, consolas, accesorios, contenido digital). Se deben registrar datos como el nombre del producto, descripción, precio, cantidad en inventario y categoría. Además, se debe registrar el proveedor de cada producto.
+## Préstamos:
+Cada préstamo está asociado a un cliente y tiene un tipo específico (hipotecario, automotriz, personal, etc.). Se deben registrar datos como el monto del préstamo, la tasa de interés, el plazo del préstamo (en meses), la fecha de inicio, y el estado actual del préstamo (activo, pagado, en mora, etc.).
 
-## Proveedores:
-Los productos son abastecidos por diversos proveedores, como fabricantes de videojuegos y hardware. Es necesario registrar la información del proveedor, incluyendo nombre, dirección, teléfono y contacto.
+## Pagos:
+Los clientes realizan pagos periódicos para amortizar sus préstamos. Cada pago debe registrar la fecha, el monto pagado, el saldo restante del préstamo después del pago, y si el pago está retrasado o al día.
 
-## Ventas:
-Cada venta está asociada a un cliente y puede incluir varios productos de diferentes categorías. Se deben registrar datos como la fecha de la venta, el total de la venta, el método de pago (tarjeta, PayPal, transferencia, etc.), así como la cantidad vendida de cada producto.
+## Sucursales:
+Los préstamos pueden ser gestionados a través de diferentes sucursales de la institución. Se necesita registrar la ubicación de las sucursales y el gerente responsable de cada una.
 
-## Facturación Electrónica:
-Cada venta genera una factura electrónica que incluye información del cliente, los productos vendidos (descripción, cantidad, precio unitario), los impuestos (IGV), y el total de la factura. Las facturas deben cumplir con los requerimientos fiscales locales.
+## Oficiales de Crédito:
+Cada préstamo es asignado a un oficial de crédito que es responsable de gestionar el préstamo. Se debe registrar información sobre el oficial de crédito como nombre, contacto, y la sucursal a la que pertenece.
 
-## Inventario:
-El inventario debe actualizarse con cada venta y cada reabastecimiento de productos por parte de los proveedores. Se necesita llevar un registro de las existencias de cada producto y gestionar el inventario de productos físicos y digitales.
+## Requerimientos Adicionales
+Los clientes pueden tener múltiples préstamos activos al mismo tiempo. Un préstamo puede cambiar de estado a lo largo del tiempo, por lo que es necesario registrar un historial de estados. Es importante poder generar reportes sobre el estado de los préstamos, como el total de préstamos activos, el total en mora, y los pagos realizados en un período específico.
 
+## Tareas
+## Modelo Entidad-Relación (ERD):
+Diseña un modelo entidad-relación que represente los datos y relaciones descritos en los requerimientos. Asegúrate de identificar las llaves primarias y foráneas, y de definir las cardinalidades entre las entidades.
+
+## Normalización:
+Normaliza las tablas de tu modelo hasta la tercera forma normal (3NF) para evitar redundancias y asegurar la integridad de los datos. Consultas SQL:
+
+## Escribe consultas SQL para:
+Obtener la lista de todos los clientes con préstamos activos. Mostrar el total de pagos realizados por cada cliente en un período específico. Listar los préstamos en mora y el oficial de crédito responsable de cada uno. Generar un reporte del total de préstamos gestionados por cada sucursal.
