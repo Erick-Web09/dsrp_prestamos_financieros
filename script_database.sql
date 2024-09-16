@@ -4,6 +4,7 @@ GO
 USE dsrp_prestamos_financieros;
 GO
 
+--Crear personas naturales
 CREATE TABLE personas_naturales (
 id INT PRIMARY KEY IDENTITY (1,1),
 numero_documento VARCHAR(15) UNIQUE NOT NULL,
@@ -13,5 +14,16 @@ apellido_materno VARCHAR(255) NOT NULL,
 direccion NVARCHAR(1000) NOT NULL,
 celular VARCHAR(15) NOT NULL,
 email VARCHAR(255) NOT NULL
-)
+);
+GO
 
+--Crear personas Juridicas
+CREATE TABLE personas_juridicas (
+id INT PRIMARY KEY IDENTITY (1,1),
+numero_documento VARCHAR(20) UNIQUE NOT NULL,
+razon_social VARCHAR(255) NOT NULL,
+domicilio_fiscal VARCHAR(1000) NOT NULL,
+telefono VARCHAR(15) NOT NULL,
+email VARCHAR(255) NOT NULL
+);
+GO
