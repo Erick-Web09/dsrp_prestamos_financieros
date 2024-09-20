@@ -27,3 +27,13 @@ telefono VARCHAR(15) NOT NULL,
 email VARCHAR(255) NOT NULL
 );
 GO
+
+--Clientes
+CREATE TABLE clientes (
+id INT PRIMARY KEY IDENTITY (1,1),
+persona_id INT NOT NULL,
+tipo_clienye VARCHAR(100) NOT NULL,
+fecha_registro DATETIME DEFAULT GETDATE() NOT NULL --Rellena automáticamente la columna con la fecha y hora actuales si no se proporciona un valor al insertar un registro.
+);
+GO
+
