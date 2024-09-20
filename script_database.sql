@@ -37,3 +37,13 @@ fecha_registro DATETIME DEFAULT GETDATE() NOT NULL --Rellena automáticamente la 
 );
 GO
 
+--Tipos prestamo
+CREATE TABLE tipos_prestamos (
+id INT PRIMARY KEY IDENTITY (1,1),
+nombre VARCHAR(155) UNIQUE NOT NULL,
+estado BIT NOT NULL,
+descripción VARCHAR (500)
+);
+GO
+
+EXEC sp_help clientes; --Función para ver el Detalle de la tabla creada
