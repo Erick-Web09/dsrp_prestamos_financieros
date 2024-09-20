@@ -82,3 +82,21 @@ FOREIGN KEY (supervisor_id) REFERENCES empleados(id)
 GO
 
 EXEC sp_help empleados;
+
+--Pagos
+CREATE TABLE pagos (
+id INT PRIMARY KEY IDENTITY (1,1),
+metodo_pago_id INT NOT NULL,
+codigo_operacion VARCHAR(20) NOT NULL,
+monto_pagado MONEY NOT NULL,
+estado VARCHAR(55) NOT NULL,
+fecha_pago DATETIME DEFAULT GETDATE()
+FOREIGN KEY (metodo_pago_id) REFERENCES metodos_pago(id)
+);
+GO
+
+--Prestamos
+CREATE TABLE prestamos (
+id INT PRIMARY KEY IDENTITY (1,1),
+
+)
