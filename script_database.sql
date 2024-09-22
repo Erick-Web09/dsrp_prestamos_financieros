@@ -98,5 +98,22 @@ GO
 --Prestamos
 CREATE TABLE prestamos (
 id INT PRIMARY KEY IDENTITY (1,1),
+cliente_id INT NOT NULL,
+sucursal_id INT NOT  NULL,
+tipo_prestamo_id INT NOT NULL,
+oficial_credito_id INT NOT NULL,
+estado_prestamo VARCHAR(55) NOT NULL,
+monto MONEY NOT NULL,
+tasa_interes DECIMAL(9,4) NOT NULL,
+plazo_meses INT NOT NULL,
+fecha_inicio DATETIME DEFAULT GETDATE() NOT NULL,
 
-)
+FOREIGN KEY (cliente_id) REFERENCES clientes(id),
+FOREIGN KEY (sucursal_id) REFERENCES sucursales(id),
+FOREIGN KEY (tipo_prestamo_id) REFERENCES tipos_prestamos(id),
+FOREIGN KEY (oficial_credito_id) REFERENCES empleados(id),
+);
+GO
+
+EXEC sp_help prestamos;
+DROP TABLE prestamos
