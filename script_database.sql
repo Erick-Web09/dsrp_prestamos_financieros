@@ -90,10 +90,21 @@ metodo_pago_id INT NOT NULL,
 codigo_operacion VARCHAR(20) NOT NULL,
 monto_pagado MONEY NOT NULL,
 estado VARCHAR(55) NOT NULL,
-fecha_pago DATETIME DEFAULT GETDATE()
+fecha_pago DATETIME DEFAULT GETDATE(),
+--Se añadira nuevos detalles por auditoria y se recomienda poner en tb transaccionales
+created_at datetime2 NOT NULL,
+updated_at datetime2 NULL,
+deleted_at datetime2 NULL,
+created_by int NOT NULL,
+updated_by int NULL,
+deleted_by int NULL,
+
 FOREIGN KEY (metodo_pago_id) REFERENCES metodos_pago(id)
+
 );
 GO
+
+DROP TABLE pagos
 
 --Prestamos
 CREATE TABLE prestamos (
@@ -117,3 +128,29 @@ GO
 
 EXEC sp_help prestamos;
 DROP TABLE prestamos
+
+--Cuota
+CREATE TABLE cuotas (
+id INT PRIMARY KEY IDENTITY (1,1),
+prestamo_id INT NOT NULL,
+numero_cuota MONEY NOT NULL,
+monto_cuota MONEY NOT NULL,
+fecha_vencimiento DATETIME DEFAULT GETDATE() NOT NULL,
+FOREIGN KEY (prestamo_id) REFERENCES prestamos(id)
+);
+
+--Detalles Cuotas Pagos
+CREATE TABLE detalle_cuotas_pagos (
+id INT PRIMARY KEY IDENTITY (1,1),
+cuota_id INT NOT NULL,
+pago_id INT NOT NULL,
+saldo_restante MONEY NOT NULL,
+
+);
+
+--Como relacionar la tabla sin tener que eliminar(DROP) la tabla creada
+ALTER TABLE detalle_cuotas_pagos
+ADD CONSTRAINT fk_detalle_cuotas_pagos_cuotas FOREIGN KEY (cuota_id) REFERENCES cuotas(id)
+
+ALTER TABLE detalle_cuotas_pagos
+ADD CONSTRAINT fk_detalle_cuotas_pagos_pagos FOREIGN KEY (pago_id) REFERENCES pagos(id)  
